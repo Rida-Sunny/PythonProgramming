@@ -70,7 +70,7 @@ def webServer(port=13331):
       error_response += b"Server: MyPythonWebServer/1.0\r\n"
       error_response += b"Connection: close\r\n"
       error_response += b"\r\n"
-      erroro_response += b"<html><body><h1>404 Not Found</h1></body></html>"
+      error_response += b"<html><body><h1>404 Not Found</h1></body></html>"
       connectionSocket.send(error_response)
       #Fill in end
 
