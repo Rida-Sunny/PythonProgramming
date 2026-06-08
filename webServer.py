@@ -55,7 +55,7 @@ def webServer(port=13331):
       #Send everything as one send command, do not send one line/item at a time!
 
       # Fill in start
-
+      connectionSocket.send(outputdata)
 
       # Fill in end
         
@@ -65,17 +65,22 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       # Remember the format you used in the try: block!
       #Fill in start
-
+      error_response = b"HTTP/1.1 404 Not Found\r\n"
+      error_response += b"Content-Type: text/html; charset=UTF-8\r\n"
+      error_response += b"Server: MyPythonWebServer/1.0\r\n"
+      error_response += b"Connection: close\r\n"
+      error_response += b"\r\n"
+      erroro_response += b"<html><body><h1>404 Not Found</h1></body></html>"
+      connectionSocket.send(error_response)
       #Fill in end
 
 
       #Close client socket
       #Fill in start
-
+      connectionSocket.close()
       #Fill in end
 
-  # Commenting out the below (some use it for local testing). It is not required for Gradescope, and some students have moved it erroneously in the While loop. 
-  # DO NOT PLACE ANYWHERE ELSE AND DO NOT UNCOMMENT WHEN SUBMITTING, YOU ARE GONNA HAVE A BAD TIME
+  
   #serverSocket.close()
   #sys.exit()  # Terminate the program after sending the corresponding data
 
